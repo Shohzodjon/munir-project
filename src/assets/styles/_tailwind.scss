@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .flex-center {
+    @apply flex items-center;
+  }
+  .flex-start {
+    @apply flex items-start;
+  }
+  .flex-center-between {
+    @apply flex items-center justify-between;
+  }
+  .flex-center-center {
+    @apply flex items-center justify-center;
+  }
+  .main-bg {
+    @apply bg-[#2E2C2C] text-[#fff];
+  }
+  .heading-text {
+    @apply text-[24px] font-semibold text-[#2e2c2c];
+  }
+  .main--parag {
+    @apply text-[#4D5870] text-[14px];
+  }
+  .container--box {
+    @apply w-[382px] mx-auto;
+  }
+  .footer-link {
+    @apply text-[#4D5870] text-[13px] my-1 transition duration-[500ms] hover:text-[#F54646];
+  }
+}
