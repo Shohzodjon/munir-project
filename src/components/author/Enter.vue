@@ -10,17 +10,14 @@
               v-maska="'+ (###) ##-###-##-##'"
               placeholder="+998"
               autocomplete="off"
-              class="main-input"
+              :class="[v$.phone.$error ? 'error main-input ' : 'main-input ']"
               v-model="phone"
             />
-            <span v-if="v$.phone.$error" class="text-[#F54646] text-xs">
-              {{ v$.phone.$errors[0].$message }}
-            </span>
           </li>
           <li class="my-[2rem]">
             <label for="password" class="main-label">Parol</label>
             <div
-              class="bg-[#FAFAFA] border border-[#EDF0F5] rounded-md flex justify-between items-center px-2"
+              :class="[v$.password.$error ? ' error main-div' : 'main-div ']"
             >
               <input
                 type="password"
@@ -36,9 +33,6 @@
                 ><i class="bi bi-eye"></i
               ></span>
             </div>
-            <span v-if="v$.password.$error" class="text-[#F54646] text-xs">
-              {{ v$.password.$errors[0].$message }}
-            </span>
           </li>
           <li>
             <BaseButton
@@ -108,8 +102,6 @@ export default {
       this.v$.$validate(); // checks all inputs
       if (!this.v$.$error) {
         // if ANY fail validation
-      } else {
-        alert("Form failed validation");
       }
     },
 
@@ -143,6 +135,19 @@ export default {
   color: #2e2c2c;
   border: 1px solid #edf0f5;
   outline: none;
+}
+
+.main-div {
+  background: #fafafa;
+  border: 1px solid #edf0f5;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+.error {
+  border: 1px solid crimson;
 }
 .main-password {
   height: 40px;

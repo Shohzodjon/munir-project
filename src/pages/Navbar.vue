@@ -58,7 +58,7 @@ import { RouterLink } from "vue-router";
         <button
           class="text-[13px] font-semibold leading-4 hover:text-[#F54646]"
         >
-          Kirish
+          <RouterLink to="/login"> Kirish </RouterLink>
         </button>
         <button
           class="w-[147px] h-[32px] bg-[#2E2C2C] rounded-md text-[#fff] text-[13px] font-semibold"

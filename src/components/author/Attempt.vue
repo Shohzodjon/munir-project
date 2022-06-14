@@ -9,12 +9,9 @@
               type="text"
               placeholder="F.I.Sh"
               autocomplete="off"
-              class="main-input"
+              :class="[v$.userName.$error ? 'main-input error' : 'main-input']"
               v-model="userName"
             />
-            <span v-if="v$.userName.$error" class="text-[#F54646] text-xs">
-              {{ v$.userName.$errors[0].$message }}
-            </span>
           </li>
           <li class="my-[2rem]">
             <label for="password" class="main-label">Telefon raqamingiz</label>
@@ -23,14 +20,12 @@
               type="text"
               v-maska="'+ (###) ##-###-##-##'"
               placeholder="+998"
-              class="main-input"
+              :class="[
+                v$.phoneNumber.$error ? 'main-input error' : 'main-input',
+              ]"
               autocomplete="off"
               v-model="phoneNumber"
             />
-
-            <span v-if="v$.phoneNumber.$error" class="text-[#F54646] text-xs">
-              {{ v$.phoneNumber.$errors[0].$message }}
-            </span>
           </li>
           <li>
             <BaseButton
@@ -87,8 +82,6 @@ export default {
       this.v$.$validate();
       if (!this.v$.$error) {
         this.$emit("varification", this.phoneNumber);
-      } else {
-        alert("Form failed validation");
       }
     },
   },
@@ -112,6 +105,10 @@ export default {
   color: #2e2c2c;
   border: 1px solid #edf0f5;
   outline: none;
+}
+
+.error {
+  border: 1px solid crimson;
 }
 .main-password {
   height: 40px;
